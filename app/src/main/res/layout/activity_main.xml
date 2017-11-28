@@ -12,6 +12,7 @@
     </data>
 
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/main_cl"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -21,6 +22,7 @@
         >
 
         <TextView
+            android:id="@+id/main_tv_temperature"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{data.temperature}"
