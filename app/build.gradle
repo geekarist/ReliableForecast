@@ -1,5 +1,14 @@
 apply plugin: 'com.android.application'
 
+def getSecretProp(name) {
+    def prop = new Properties()
+    def relativePath = '/../private/secret.properties'
+    def path = projectDir.getPath() + relativePath
+    def reader = new FileReader(path)
+    prop.load(reader)
+    return "\"${prop.getProperty(name)}\""
+}
+
 android {
     compileSdkVersion 26
     defaultConfig {
@@ -12,6 +21,7 @@ android {
         dataBinding {
             enabled true
         }
+        buildConfigField 'String', 'OW_APPID', getSecretProp('openweather_appid')
     }
     buildTypes {
         release {
@@ -25,6 +35,8 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
