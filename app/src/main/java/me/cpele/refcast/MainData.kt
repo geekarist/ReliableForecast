@@ -1,3 +1,3 @@
 package me.cpele.refcast
 
-data class MainData(val temperature: String)
+data class MainData(val temperature: Double)

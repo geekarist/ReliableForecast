@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call<Weather>?, response: Response<Weather>?) {
-                response?.body()?.main?.temp?.apply { binding.data = MainData(toString()) }
+                response?.body()?.main?.temp?.apply { binding.data = MainData(this) }
             }
         })
     }
