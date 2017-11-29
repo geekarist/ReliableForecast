@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
 }
 
 interface WeatherService {
-    @GET("/data/2.5/weather?q=London,uk")
+    @GET("/data/2.5/weather?q=Cachan,fr&units=metric")
     fun findWeather(): Call<Weather>
 }
 
