@@ -1,3 +1,5 @@
 package me.cpele.refcast
 
-data class MainData(val temperature: Double)
+import java.util.*
+
+data class MainData(val temperature: Double?, val time: Date?)

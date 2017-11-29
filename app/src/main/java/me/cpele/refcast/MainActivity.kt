@@ -12,6 +12,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -48,7 +49,9 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call<Weather>?, response: Response<Weather>?) {
-                response?.body()?.main?.temp?.apply { binding.data = MainData(this) }
+                response?.body()?.apply {
+                    binding.data = MainData(main?.temp, dt?.let { Date(it) })
+                }
             }
         })
     }
@@ -59,6 +62,6 @@ interface WeatherService {
     fun findWeather(): Call<Weather>
 }
 
-data class Weather(val main: WeatherMain)
+data class Weather(val main: WeatherMain?, val dt: Long?)
 
-data class WeatherMain(val temp: Double)
+data class WeatherMain(val temp: Double?)
